@@ -1,0 +1,19 @@
+.avatar {
+  width: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.item {
+  margin-bottom: 20px;
+}
+.item__body {
+  margin-bottom: 6px;
+}
+.like {
+  margin-right: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease 0s;
+}
+.like:hover {
+  color: #03406A;
+}

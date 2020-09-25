@@ -1,0 +1,17 @@
+.logo {
+  height: 60px;
+}
+.header {
+  grid-area: h;
+}
+.header {
+  background-color: #03406A;
+  display: flex;
+  align-items: center;
+}
+.brand {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+}

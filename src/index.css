@@ -64,7 +64,9 @@ pre {
   font-size: 1em;
 }
 a {
+  text-decoration: none;
   background-color: transparent;
+  color: inherit;
 }
 abbr[title] {
   border-bottom: none;

@@ -1,0 +1,32 @@
+textarea {
+  resize: none;
+  width: 500px;
+  height: 60px;
+  display: block;
+  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  margin-top: 35px;
+  padding: 10px;
+}
+.textarea {
+  width: 500px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.content__posts {
+  padding-left: 20px;
+}
+.button {
+  margin-bottom: 10px;
+}
+.posts__title {
+  margin-bottom: 12px;
+  margin-top: 18px;
+}
+.textfield > div {
+  background-color: #fff;
+}
+.textfield {
+  width: 100%;
+}
