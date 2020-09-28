@@ -46,7 +46,7 @@ const messagesReducer = (state = initialState, action) => {
   }
 }
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const messageInputActionCreator = (text) => ({ type: MESSAGE_INPUT, msg: text })
+export const addMessage = () => ({ type: ADD_MESSAGE })
+export const messageInput = (text) => ({ type: MESSAGE_INPUT, msg: text })
 
 export default messagesReducer

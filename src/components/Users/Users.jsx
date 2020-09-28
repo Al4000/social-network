@@ -1,73 +1,47 @@
-import React from 'react'
 import cl from './Users.module.css'
+import React from 'react'
 import Button from '@material-ui/core/Button'
+import {NavLink} from 'react-router-dom'
 
-const Users = (props) => {
-
-	if (props.users.length === 0) {
-		props.setUsers([
-				{
-					id: 2,
-					name: 'Victor',
-					surname: 'K.',
-					avatar: '/images/Screenshot_2.png',
-					followed: true,
-					status: 'Super',
-					location: {country: 'Russia', city: 'Moscow'}
-				},
-				{
-					id: 3,
-					name: 'John',
-					surname: 'Z.',
-					avatar: '/images/Screenshot_3.png',
-					followed: true,
-					status: 'Perfect',
-					location: {country: 'USA', city: 'New-York'}
-				},
-				{
-					id: 4,
-					name: 'Helena',
-					surname: 'T.',
-					avatar: '/images/helena.jpg',
-					followed: true,
-					status: 'Development',
-					location: {country: 'China', city: 'Hong-Kong'}
-				},
-				{
-					id: 5,
-					name: 'Tony',
-					surname: 'P.',
-					avatar: '/images/Screenshot_5.png',
-					followed: false,
-					status: 'Inc',
-					location: {country: 'Canada', city: 'Ottawa'}
-				},
-				{
-					id: 6,
-					name: 'Michael',
-					surname: 'R.',
-					avatar: '/images/Screenshot_6.png',
-					followed: false,
-					status: 'Ltd',
-					location: {country: 'Mexico', city: 'Mexico'}
-				}
-			]
-		)
+let Users = (props) => {
+	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+	let pages = []
+	for (let i = 1; i <= pagesCount; i++) {
+		pages.push(i)
 	}
+
 	return (
 		<div className={cl.users}>
+			<div className={cl.pagination}>
+				{
+					pages.map(page =>
+						<span
+							key={page}
+							className={`${props.currentPage === page && cl.pagi_active} ${cl.pagi}`}
+							onClick = {() => props.onPageChanged(page)}
+						>{page}</span>
+					)
+				}
+			</div>
 			{
 				props.users.map(u =>
 					<div key={u.id} className={cl.card}>
 						<div className={cl.card__left}>
 							<div className={cl.avatar}>
-								<img src={u.avatar} alt=""/>
+								{/*<img src={u.avatar} alt=""/>*/}
+								<NavLink to={'/profile/' + u.id}>
+									<img src={u.photos.small != null ? u.photos.small : '/avatar.png'} alt=""/>
+								</NavLink>
 							</div>
 							<Button
-								variant   = "contained"
-								color     = {u.followed ? 'secondary' : 'primary'}
-								className = {cl.button}
-								onClick   = {u.followed ? () => {props.unfollow(u.id)} : () => {props.follow(u.id)}}
+								variant="contained"
+								color={u.followed ? 'secondary' : 'primary'}
+								className={cl.button}
+								onClick={u.followed ? () => {
+									props.unfollow(u.id)
+								} : () => {
+									props.follow(u.id)
+								}}
 							>
 								{u.followed ? 'unfollow' : 'follow'}
 							</Button>
@@ -75,27 +49,28 @@ const Users = (props) => {
 						<div className={cl.info}>
 							<div>
 								<div className={cl.name}>
-									{u.name} {u.surname}
+									{u.name}
+									{/*{u.surname}*/}
 								</div>
 								<div className={cl.status}>
 									{u.status}
 								</div>
 							</div>
-							<span className={cl.location}>
-								{u.location.country }, {' '}
-								{u.location.city}
-							</span>
+							{/*<span className={cl.location}>*/}
+							{/*	{u.location.country }, {' '}*/}
+							{/*	{u.location.city}*/}
+							{/*</span>*/}
 						</div>
 					</div>
 				)
 			}
 			<div className={cl.showmore}>
 				<Button
-					variant   = "contained"
-					color     = "primary"
-					className = {cl.button_more}
-					size      = "large"
-					// onClick   = {onFollow}
+					variant="contained"
+					color="primary"
+					className={cl.button_more}
+					size="large"
+					// onClick   = {showMore}
 				>
 					Show more
 				</Button>

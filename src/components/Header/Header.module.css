@@ -1,5 +1,11 @@
 .logo {
-  height: 60px;
+  height: 40px;
+  margin-left: 10px;
+  width: 40px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #fff;
 }
 .header {
   grid-area: h;

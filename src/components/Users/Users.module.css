@@ -52,3 +52,16 @@
 .button {
     width: 100%;
 }
+
+.pagination {
+    margin-bottom: 20px;
+}
+.pagi_active {
+    font-weight: 700;
+    color: #2196f3;
+    pointer-events: none;
+}
+.pagi {
+    margin-right: 6px;
+    cursor: pointer;
+}

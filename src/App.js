@@ -2,7 +2,6 @@ import React from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import NavbarContainer from './components/Navbar/NavbarContainer'
-import Profile from './components/Profile/Profile'
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
@@ -12,6 +11,7 @@ import blue from '@material-ui/core/colors/blue'
 import pink from '@material-ui/core/colors/pink'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
+import ProfileContainer from './components/Profile/ProfileContainer'
 
 const theme = createMuiTheme({
 	palette: {
@@ -29,7 +29,7 @@ const App = () => {
 				<main className="content">
 					<Route
 						path="/profile"
-						component={Profile}
+						component={ProfileContainer}
 					/>
 					<Route
 						exact path="/dialogs"
