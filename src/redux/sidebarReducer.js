@@ -1,15 +1,49 @@
+import {usersAPI} from '../api/api'
+
+const SET_FRIENDS = 'SET_FRIENDS'
+const SET_TOTAL_FRIENDS = 'SET_TOTAL_FRIENDS'
+
 let initialState = {
-  friends: [
-    {id: 2, name: 'Victor', avatar: '/images/Screenshot_2.png'},
-    {id: 3, name: 'John', avatar: '/images/Screenshot_3.png'},
-    {id: 4, name: 'Helena', avatar: '/images/helena.jpg'},
-    {id: 5, name: 'Tony', avatar: '/images/Screenshot_5.png'},
-    {id: 6, name: 'Michael', avatar: '/images/Screenshot_6.png'}
-  ]
+	friends: [],
+	totalFriendsCount: 0,
 }
 
 const sidebarReducer = (state = initialState, action) => {
-  return state
+	switch(action.type) {
+		case SET_FRIENDS:
+			return {...state, friends: action.friends}
+
+		case SET_TOTAL_FRIENDS:
+			return {...state, totalFriendsCount: action.friends}
+
+		default:
+			return state
+	}
+}
+
+// ACTION CREATORS
+export const setFriends = (friends) => ({ type: SET_FRIENDS, friends })
+export const setTotalFriendsCount = (friends) => ({ type: SET_TOTAL_FRIENDS, friends })
+
+// THUNK CREATORS
+export const getFriends = () => async (dispatch) => {
+	let response = await usersAPI.getFriends()
+	let friends = response.items
+	let shuffleArray = () => {
+		let shuffled = friends.slice(0), i = friends.length, temp, index
+		while (i--) {
+			index = Math.floor((i + 1) * Math.random())
+			temp = shuffled[index]
+			shuffled[index] = shuffled[i]
+			shuffled[i] = temp
+		}
+		return shuffled.slice(0, 3) // change random quantity friends here
+	}
+
+	let randomFriends = shuffleArray()
+
+	dispatch(setFriends(randomFriends))
+	dispatch(setTotalFriendsCount(response.totalCount))
 }
 
 export default sidebarReducer

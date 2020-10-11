@@ -21,3 +21,14 @@
   color: #fff;
   font-size: 22px;
 }
+.login_block {
+  margin-right: 10px;
+  color: #fff;
+}
+.button_logout {
+  margin-left: 12px!important;
+}
+.button_wrap {
+  display: flex;
+  align-items: center;
+}

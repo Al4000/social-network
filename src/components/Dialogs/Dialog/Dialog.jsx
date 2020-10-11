@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom'
 
 const Dialog = (props) => {
   return (
-    <div className={ cl.dialog }>
-      <NavLink to={ "/dialogs/" + props.id } className={ cl.dialog_link }>
-        <div className={ cl.dialog_avatar }>
-          <img src={ props.avatar } alt=""/>
+    <div className={cl.dialog}>
+      <NavLink to={"/dialogs/" + props.id} className={cl.dialog_link}>
+        <div className={cl.dialog_avatar}>
+          <img src={props.avatar} alt=""/>
         </div>
         { props.name }
       </NavLink>

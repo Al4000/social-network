@@ -1,14 +1,20 @@
-const MESSAGE_INPUT = 'MESSAGE_INPUT'
-const ADD_MESSAGE   = 'ADD_MESSAGE'
+import avatar1 from '../static/my.png'
+import avatar2 from '../static/Screenshot_2.png'
+import avatar3 from '../static/Screenshot_3.png'
+import avatar4 from '../static/helena.jpg'
+import avatar5 from '../static/Screenshot_5.png'
+import avatar6 from '../static/Screenshot_6.png'
+
+const ADD_MESSAGE = 'ADD_MESSAGE'
 
 let initialState = {
   dialogs: [
-    {id: 1, name: 'Alexander', avatar: '/images/my.png'},
-    {id: 2, name: 'Victor', avatar: '/images/Screenshot_2.png'},
-    {id: 3, name: 'John', avatar: '/images/Screenshot_3.png'},
-    {id: 4, name: 'Helena', avatar: '/images/helena.jpg'},
-    {id: 5, name: 'Tony', avatar: '/images/Screenshot_5.png'},
-    {id: 6, name: 'Michael', avatar: '/images/Screenshot_6.png'}
+    {id: 1, name: 'Alexander', avatar: avatar1},
+    {id: 2, name: 'Victor', avatar: avatar2},
+    {id: 3, name: 'John', avatar: avatar3},
+    {id: 4, name: 'Helena', avatar: avatar4},
+    {id: 5, name: 'Tony', avatar: avatar5},
+    {id: 6, name: 'Michael', avatar: avatar6}
   ],
   messages: [
     {id: 1, message: 'Hi', type: 'incoming'},
@@ -17,8 +23,7 @@ let initialState = {
     {id: 4, message: 'Good bye', type: 'outcoming'},
     {id: 5, message: '100%', type: 'incoming'},
     {id: 6, message: 'Yo', type: 'outcoming'}
-  ],
-  newMessageText: 'Enter a message..'
+  ]
 }
 
 const messagesReducer = (state = initialState, action) => {
@@ -26,19 +31,12 @@ const messagesReducer = (state = initialState, action) => {
     case ADD_MESSAGE:
       let newMessage = {
         id: 7,
-        message: state.newMessageText,
+        message: action.newMessageText,
         type: 'incoming'
       }
       return {
         ...state,
-        messages: [...state.messages, newMessage],
-        newMessageText: 'Enter a message..'
-      }
-
-    case MESSAGE_INPUT:
-     return {
-        ...state,
-        newMessageText: action.msg
+        messages: [...state.messages, newMessage]
       }
 
     default:
@@ -46,7 +44,6 @@ const messagesReducer = (state = initialState, action) => {
   }
 }
 
-export const addMessage = () => ({ type: ADD_MESSAGE })
-export const messageInput = (text) => ({ type: MESSAGE_INPUT, msg: text })
+export const addMessage = (newMessageText) => ({ type: ADD_MESSAGE, newMessageText })
 
 export default messagesReducer

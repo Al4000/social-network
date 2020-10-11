@@ -1,5 +1,5 @@
 .avatar {
-  width: 100px;
+  max-width: 200px;
   margin-left: 20px;
   margin-top: 20px;
   margin-right: 40px;
@@ -10,11 +10,29 @@
 }
 .content__info_name {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .content__info_field {
   margin-bottom: 5px;
 }
 .banner {
   width: 100%;
+}
+.input {
+  border: none;
+  padding: 10px;
+  font-family: inherit;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  outline: none;
+}
+.status_text {
+  margin-bottom: 32px;
+  font-style: italic;
+  opacity: 0.85;
+}
+.status {
+  height: 50px;
 }

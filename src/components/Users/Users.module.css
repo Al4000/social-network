@@ -65,3 +65,9 @@
     margin-right: 6px;
     cursor: pointer;
 }
+.pagi_button {
+    margin-right: 12px!important;
+}
+span + .pagi_button {
+    margin-left: 6px!important;
+}

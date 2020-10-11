@@ -9,11 +9,26 @@
 .item__body {
   margin-bottom: 6px;
 }
+.likes {
+  display: flex;
+  align-items: center;
+ }
 .like {
-  margin-right: 5px;
+  margin-right: 12px;
   cursor: pointer;
   transition: color 0.3s ease 0s;
+  display: flex;
+  align-items: center;
 }
 .like:hover {
   color: #03406A;
+}
+.like_counter {
+  margin-left: 3px;
+}
+.like path {
+  transition: opacity 0.3s ease 0s;
+}
+.like_active path {
+  opacity: 1;
 }

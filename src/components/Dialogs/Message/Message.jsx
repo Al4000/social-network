@@ -5,7 +5,7 @@ const Message = (props) => {
   let typeClass = props.type === 'incoming' ? cl.message_incoming : cl.message_outcoming
   
   return (
-    <div className={`${cl.message} ${typeClass} `}>
+    <div className={`${cl.message} ${typeClass}`}>
       { props.message }
     </div>
   )

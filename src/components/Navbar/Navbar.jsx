@@ -1,27 +1,14 @@
 import React from 'react'
 import cl from './Navbar.module.css'
 import {NavLink} from 'react-router-dom'
+import avatar from '../../static/avatar.png'
 
 const Navbar = (props) => {
-	let state = props.sidebar
-	let shuffleArray = () => {
-		let shuffled = state.friends.slice(0), i = state.friends.length, temp, index
-		while (i--) {
-			index = Math.floor((i + 1) * Math.random())
-			temp = shuffled[index]
-			shuffled[index] = shuffled[i]
-			shuffled[i] = temp
-		}
-		return shuffled.slice(0, 3) // change random quantity friends here
-	}
-
-	let randomFriends = shuffleArray()
-
-	let friendsElements = randomFriends.map((fr) => {
+	let friendsElements = props.sidebar.friends.map((fr) => {
 		return (
 			<li className={cl.friends_item} key={fr.id}>
 				<div className={cl.friends_avatar}>
-					<img src={fr.avatar} alt=""/>
+					<img src={(!fr || fr.photos.small === null) ? avatar : fr.photos.small} alt=""/>
 				</div>
 				<div className={cl.friends_name}>
 					{fr.name}
@@ -29,6 +16,7 @@ const Navbar = (props) => {
 			</li>
 		)
 	})
+
 	return (
 		<nav className={cl.nav}>
 			<ul className={cl.nav__ul}>
@@ -82,7 +70,7 @@ const Navbar = (props) => {
 				</li>
 			</ul>
 			<div className={cl.friends}>
-				<h4>Friends</h4>
+				<h4 className={cl.friends_title}>Friends <span className={cl.friends_count}>{props.sidebar.totalFriendsCount}</span></h4>
 				<ul className={cl.friends_list}>
 					{friendsElements}
 				</ul>

@@ -9,6 +9,8 @@
 }
 .content {
   grid-area: с;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 button {

@@ -49,6 +49,7 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  margin-bottom: 3px;
 }
 .friends_avatar img {
   max-width: 100%;
@@ -61,11 +62,24 @@
   align-items: center;
   width: 50px;
 }
+.friends_item + .friends_item {
+  margin-left: 5px;
+}
+.friends_title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
 .friends_name {
-  font-size: 14px;
-  text-overflow: ellipsis;
+  font-size: 13px;
+  /*text-overflow: ellipsis;*/
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
   text-align: center;
+}
+.friends_count {
+  font-size: 0.8em;
+  margin-left: 5px;
+  opacity: 0.8;
 }

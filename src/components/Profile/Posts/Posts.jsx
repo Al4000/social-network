@@ -2,70 +2,106 @@ import React from 'react'
 import cl from './Posts.module.css'
 import Post from './Post/Post'
 import Button from '@material-ui/core/Button'
-// import TextField from '@material-ui/core/TextField'
+import {Field, reduxForm} from 'redux-form'
+import TextField from '@material-ui/core/TextField'
+import {PostAdd} from '@material-ui/icons'
 
+const Posts = React.memo(props => {
+	let addPost = (values) => {
+		props.addPost(values.newPostText)
+	}
 
-const Posts = (props) => {
-  let postsElements = props.posts.map((post) => {
-    return (
-      <Post
-        text     = {post.text}
-        likes    = {post.likes}
-        dislikes = {post.dislikes}
-        key      = {post.id}
-      />
-    )
-  })
+	let postsElements = [...props.posts].reverse().map((post) => {
+		return (
+			<Post
+				id={post.id}
+				text={post.text}
+				likes={post.likes}
+				dislikes={post.dislikes}
+				key={post.id}
+				profile={props.profile}
+				like={post.like}
+				dislike={post.dislike}
+				toggleLike={props.toggleLike}
+				toggleDislike={props.toggleDislike}
+			/>
+		)
+	})
 
-  let newPostElement = React.createRef()
+	return (
+		<div className={cl.content__posts}>
+			<PostReduxForm onSubmit={addPost}/>
+			<div className={cl.posts}>
+				<h4 className={cl.posts__title}>My posts</h4>
+				{postsElements}
+			</div>
+		</div>
+	)
+})
 
-  let onAddPost = () => {
-    props.addPost()
-  }
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value
-    props.changeText(text)
-  }
-
-  return (
-    <div className={cl.content__posts}>
-      <div>
-        <div className={cl.textarea}>
-          {/* <TextField
-            id="outlined-multiline-flexible"
-            label="What's new.."
-            multiline
-            rowsMax={6}
-            // value=""
-            // onChange=""
-            variant="outlined"
-            className={cl.textfield}
-            
-          /> */}
-          <textarea 
-            rows     = "6"
-            ref      = {newPostElement}
-            onChange = {onPostChange}
-            value    = {props.newPostText}
-          />
-        </div>
-
-        <Button
-          variant   = "contained"
-          color     = "primary"
-          className = {cl.button}
-          onClick   = {onAddPost}
-        >
-          Add post
-        </Button>
-      </div>
-      <div className={cl.posts}>
-        <h4 className={cl.posts__title}>My posts</h4>
-        {postsElements}
-      </div>
-    </div>
-  )
+const validate = values => {
+	const errors = {}
+	const requiredFields = [
+		'newPostText'
+	]
+	requiredFields.forEach(field => {
+		if (!values[field]) {
+			errors[field] = 'Required'
+		}
+		if (values[field] && values[field].length > 10) {
+			errors[field] = 'Max length is 10 symbols'
+		}
+	})
+	return errors
 }
+
+const renderTextField =
+	({
+		 label,
+		 input,
+		 meta: {touched, invalid, error},
+		 ...custom
+	 }) => (
+		<TextField
+			id="outlined-multiline-flexible"
+			label={label}
+			placeholder={label}
+			error={touched && invalid}
+			helperText={touched && error}
+			variant="outlined"
+			className={cl.textfield}
+			{...input}
+			{...custom}
+		/>
+	)
+
+const PostForm = (props) => {
+	return (
+		<form onSubmit={props.handleSubmit}>
+			<div className={cl.textarea}>
+				<Field
+					rows="6"
+					label={"What's new.."}
+					component={renderTextField}
+					name={'newPostText'}
+				/>
+			</div>
+			<Button
+				variant="contained"
+				color="primary"
+				className={cl.button}
+				type={'submit'}
+				endIcon={<PostAdd/>}
+			>
+				Add post
+			</Button>
+		</form>
+	)
+}
+
+const PostReduxForm = reduxForm({
+	form: 'postSend',
+	validate
+})(PostForm)
 
 export default Posts
