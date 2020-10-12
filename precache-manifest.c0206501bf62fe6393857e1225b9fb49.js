@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8381c516bca418508d00335bdbd61f5a",
+    "revision": "9fef68b71aea9c26ef0c5865c5bfc40b",
     "url": "/social-network/index.html"
   },
   {
-    "revision": "44dfe8f1e2b5d533de60",
-    "url": "/social-network/static/css/3.3d622525.chunk.css"
+    "revision": "ec474e12ad15b8751925",
+    "url": "/social-network/static/css/3.ec6808ec.chunk.css"
   },
   {
-    "revision": "4cf52cd73bb99aa77f1c",
+    "revision": "607b2fad1938a7f9db5c",
     "url": "/social-network/static/css/4.764a4487.chunk.css"
   },
   {
-    "revision": "d1caf772ffe990d13e85",
+    "revision": "bc67834c69ea3dd1e833",
     "url": "/social-network/static/css/main.80a961e0.chunk.css"
   },
   {
-    "revision": "e8d46a71d91793e8d182",
-    "url": "/social-network/static/js/2.987212d1.chunk.js"
+    "revision": "2e0fec979cb5792da315",
+    "url": "/social-network/static/js/2.201e78b6.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/social-network/static/js/2.987212d1.chunk.js.LICENSE.txt"
+    "url": "/social-network/static/js/2.201e78b6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "44dfe8f1e2b5d533de60",
-    "url": "/social-network/static/js/3.75b43c93.chunk.js"
+    "revision": "ec474e12ad15b8751925",
+    "url": "/social-network/static/js/3.baef25dc.chunk.js"
   },
   {
-    "revision": "4cf52cd73bb99aa77f1c",
-    "url": "/social-network/static/js/4.13fbb62a.chunk.js"
+    "revision": "607b2fad1938a7f9db5c",
+    "url": "/social-network/static/js/4.ec2f68ee.chunk.js"
   },
   {
-    "revision": "d1caf772ffe990d13e85",
-    "url": "/social-network/static/js/main.ec66b163.chunk.js"
+    "revision": "bc67834c69ea3dd1e833",
+    "url": "/social-network/static/js/main.f4fa5971.chunk.js"
   },
   {
-    "revision": "a8fb26a5f9604496c0d3",
-    "url": "/social-network/static/js/runtime-main.2f9a7f03.js"
+    "revision": "b8179a4cafcde6aab6c4",
+    "url": "/social-network/static/js/runtime-main.a5e5414d.js"
   },
   {
     "revision": "e2849d3cdbeceb028808e33b41376c42",
