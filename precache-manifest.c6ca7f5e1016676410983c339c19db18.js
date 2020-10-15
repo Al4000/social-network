@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e8c0fcc78a04df9780167c0a66b28d0d",
+    "revision": "6954e6abf8d4da7cf1848819211aac74",
     "url": "/social-network/index.html"
   },
   {
-    "revision": "dadf6b399d164535445a",
+    "revision": "eb8d367cf9ea1fc39cd7",
     "url": "/social-network/static/css/3.6ad993e5.chunk.css"
   },
   {
-    "revision": "a9871dc59255dcaf0f86",
+    "revision": "e1f773c1784e40269fb9",
     "url": "/social-network/static/css/4.764a4487.chunk.css"
   },
   {
-    "revision": "428c1f5b5478f2c0e77b",
+    "revision": "c1289d9d9b07ea17d758",
     "url": "/social-network/static/css/main.5b732307.chunk.css"
   },
   {
-    "revision": "ac4b3d012de5d1a7f37e",
-    "url": "/social-network/static/js/2.eb46efcd.chunk.js"
+    "revision": "5d2f5463bb5b787736a6",
+    "url": "/social-network/static/js/2.1e8da758.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/social-network/static/js/2.eb46efcd.chunk.js.LICENSE.txt"
+    "url": "/social-network/static/js/2.1e8da758.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dadf6b399d164535445a",
-    "url": "/social-network/static/js/3.75e7a363.chunk.js"
+    "revision": "eb8d367cf9ea1fc39cd7",
+    "url": "/social-network/static/js/3.40797141.chunk.js"
   },
   {
-    "revision": "a9871dc59255dcaf0f86",
-    "url": "/social-network/static/js/4.784c4ae0.chunk.js"
+    "revision": "e1f773c1784e40269fb9",
+    "url": "/social-network/static/js/4.0001aee6.chunk.js"
   },
   {
-    "revision": "428c1f5b5478f2c0e77b",
-    "url": "/social-network/static/js/main.626bcd5f.chunk.js"
+    "revision": "c1289d9d9b07ea17d758",
+    "url": "/social-network/static/js/main.057a2d89.chunk.js"
   },
   {
-    "revision": "4dcbe9d40b508705c2ea",
-    "url": "/social-network/static/js/runtime-main.7275e21d.js"
+    "revision": "490b0c2874da9eac440d",
+    "url": "/social-network/static/js/runtime-main.6bd0f005.js"
   },
   {
     "revision": "d05a41d98f07a5b45fad987aba2435f3",
