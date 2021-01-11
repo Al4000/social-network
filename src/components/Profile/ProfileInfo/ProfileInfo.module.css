@@ -1,5 +1,13 @@
 .avatar {
   max-width: 200px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.avatar_block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 20px;
   margin-top: 20px;
   margin-right: 40px;
@@ -13,7 +21,7 @@
   margin-bottom: 5px;
 }
 .content__info_field {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .banner {
   width: 100%;
@@ -35,4 +43,54 @@
 }
 .status {
   height: 50px;
+}
+.input_upload {
+  display: none;
+}
+.button_upload {
+  margin-top: 12px;
+}
+.button_edit {
+  margin-bottom: 10px;
+}
+.button_save {
+  margin-bottom: 12px;
+}
+.input_edit {
+  margin-left: 6px;
+  margin-bottom: 0;
+}
+.profile_form {
+  width: 500px;
+}
+.content__edit_field {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.content__edit_field fieldset {
+  top: -6px;
+}
+.content__edit_field b {
+  width: 150px;
+}
+.instagram span {
+  font-weight: 400;
+}
+.instagram {
+  display: flex;
+  justify-content: space-between;
+}
+.textfield {
+  margin-left: 10px;
+}
+.textfield > div {
+  background-color: #fff;
+}
+.checkbox {
+  margin-left: 10px;
+}
+.summary_error {
+  color: red;
+  margin-bottom: 6px;
 }

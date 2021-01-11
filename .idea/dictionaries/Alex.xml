@@ -4,6 +4,7 @@
       <w>autorized</w>
       <w>axios</w>
       <w>faceboooook</w>
+      <w>fullname</w>
       <w>icomponent</w>
       <w>instagram</w>
       <w>navbar</w>
@@ -12,6 +13,7 @@
       <w>showmore</w>
       <w>textfield</w>
       <w>unfollow</w>
+      <w>unhandledrejection</w>
     </words>
   </dictionary>
 </component>

@@ -23,6 +23,10 @@ export const getCurrentPage = (state) => {
 	return state.usersPage.currentPage
 }
 
+export const getCurrentPagiNumber = (state) => {
+	return state.usersPage.currentPagiNumber
+}
+
 export const getFollowInProgress = (state) => {
 	return state.usersPage.followInProgress
 }

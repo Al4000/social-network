@@ -1,3 +1,7 @@
+#root {
+  min-height: 100vmin;
+}
+
 .wrapper {
   display: grid;
   width: 1024px;
@@ -11,6 +15,9 @@
   grid-area: с;
   padding-top: 10px;
   padding-left: 10px;
+}
+.content.profile_content {
+  padding: 0;
 }
 
 button {

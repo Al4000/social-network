@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import cl from './Users.module.css'
 import Button from '@material-ui/core/Button'
 
-const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, pagiSize = 10}) => {
+const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, pagiSize = 10, currentPagiNumber}) => {
 	let pagesCount = Math.ceil(totalUsersCount / pageSize)
 	let pages = []
 	for (let i = 1; i <= pagesCount; i++) {
@@ -10,7 +10,7 @@ const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, pagiS
 	}
 
 	let pagiCount = Math.ceil(pagesCount / pagiSize)
-	let [pagiNumber, setPagiNumber] = useState(1)
+	let [pagiNumber, setPagiNumber] = useState(currentPagiNumber)
 	let leftPagi = (pagiNumber - 1) * pagiSize + 1
 	let rightPagi = pagiNumber * pagiSize
 
@@ -33,7 +33,7 @@ const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, pagiS
 					<span
 						key={page}
 						className={`${currentPage === page ? cl.pagi_active : ''} ${cl.pagi}`}
-						onClick = {() => onPageChanged(page)}
+						onClick = {() => onPageChanged(page, pagiNumber)}
 					>{page}</span>
 				)
 			}

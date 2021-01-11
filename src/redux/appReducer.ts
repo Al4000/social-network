@@ -3,12 +3,20 @@ import {getAuthUserData} from './authReducer'
 const SET_INITIALIZED = 'SET_INITIALIZED'
 const TOGGLE_FETCHING = 'TOGGLE_FETCHING'
 
-let initialState = {
+export type InitialStateType = {
+	isFetching: boolean,
+	initialized: boolean
+}
+type InitializedSuccessActionType = {
+	type: typeof SET_INITIALIZED
+}
+export type IsFetchingType = boolean
+let initialState: InitialStateType = {
 	initialized: false,
 	isFetching: true
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
 	switch(action.type) {
 		case SET_INITIALIZED:
 			return {...state, initialized: true}
@@ -22,13 +30,13 @@ const appReducer = (state = initialState, action) => {
 }
 
 // ACTION CREATORS
-export const setInitialingSuccess = () =>
+export const setInitialingSuccess = (): InitializedSuccessActionType =>
 	({ type: SET_INITIALIZED })
-export const setFetching = (isFetching) => ({ type: TOGGLE_FETCHING, isFetching })
+export const setFetching = (isFetching: IsFetchingType) => ({ type: TOGGLE_FETCHING, isFetching })
 
 
 // THUNK CREATORS
-export const initializeApp = () => (dispatch) => {
+export const initializeApp = () => (dispatch: any) => {
 	dispatch(setFetching(true))
 	let dispatchResult = dispatch(getAuthUserData())
 

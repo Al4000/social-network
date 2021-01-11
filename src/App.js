@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react'
-import {BrowserRouter, Route, withRouter} from 'react-router-dom'
+import {Redirect, BrowserRouter, Route, withRouter, Switch} from 'react-router-dom'
 import './App.css'
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
@@ -28,61 +28,81 @@ const theme = createMuiTheme({
 
 class App extends React.Component {
 
+	catchAllUnhandledErrors = (promiseRejectionEvent) => {
+		alert(promiseRejectionEvent)
+		console.error(promiseRejectionEvent)
+	}
+
 	componentDidMount() {
 		this.props.initializeApp()
+		window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
 	}
 
 	render() {
 		if (!this.props.initialized) {
-			return <Preloader/>
+			return <Preloader />
 		}
+		let isProfile = window.location.pathname.indexOf('/profile') > 0 ? 'profile_content' : ''
 
 		return (
 			<ThemeProvider theme={theme}>
 				<div className="wrapper">
-					<HeaderContainer/>
-					<NavbarContainer/>
-					<main className="content">
-						<Route
-							path="/profile/:userId?"
-							render={ () => {
-								return (
-									<Suspense fallback={<Preloader />}>
-										<ProfileContainer />
-									</Suspense>
-								)
-							}}
-						/>
-						<Route
-							exact path="/dialogs"
-							render={ () => {
-								return (
-									<Suspense fallback={<Preloader />}>
-										<DialogsContainer />
-									</Suspense>
-								)
-							}}
-						/>
-						<Route
-							path="/news"
-							component={News}
-						/>
-						<Route
-							path="/music"
-							component={Music}
-						/>
-						<Route
-							path="/settings"
-							component={Settings}
-						/>
-						<Route
-							path="/users"
-							component={UsersContainer}
-						/>
-						<Route
-							path='/login'
-							component={Login}
-						/>
+					<HeaderContainer />
+					<NavbarContainer />
+					<main className={`${isProfile} content`}>
+						<Switch>
+							<Route path='/' exact>
+								<Redirect to='/profile'/>
+							</Route>
+							<Route
+								path="/profile/:userId?"
+								render={() => {
+									return (
+										<Suspense fallback={<Preloader />}>
+											<ProfileContainer />
+										</Suspense>
+									)
+								}}
+							/>
+							<Route
+								exact path="/dialogs"
+								render={() => {
+									return (
+										<Suspense fallback={<Preloader />}>
+											<DialogsContainer />
+										</Suspense>
+									)
+								}}
+							/>
+							<Route
+								path="/news"
+								component={News}
+							/>
+							<Route
+								path="/music"
+								component={Music}
+							/>
+							<Route
+								path="/settings"
+								component={Settings}
+							/>
+							<Route
+								path="/users"
+								component={UsersContainer}
+							/>
+							<Route
+								path="/login"
+								component={Login}
+							/>
+							<Route
+								path="*"
+								render={() => <div>404 not found</div>}
+							/>
+						</Switch>
 					</main>
 				</div>
 			</ThemeProvider>
@@ -102,7 +122,9 @@ let AppContainer = compose(
 const SocialNetworkApp = () => {
 	return (
 		<React.StrictMode>
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
+			<BrowserRouter
+				basename={process.env.PUBLIC_URL}
+			>
 				<Provider store={store}>
 					<AppContainer />
 				</Provider>

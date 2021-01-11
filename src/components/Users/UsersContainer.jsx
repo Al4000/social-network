@@ -8,18 +8,18 @@ import Preloader from '../common/Preloader/Preloader'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 import {
-	getCurrentPage, getFollowInProgress, getIsFetching,
+	getCurrentPage, getCurrentPagiNumber, getFollowInProgress, getIsFetching,
 	getPageSize, getTotalUsersCount, getUsersReselect
 } from '../../redux/usersSelectors'
 
 class UsersContainer extends React.Component {
 
 	componentDidMount() {
-		this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+		this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.currentPagiNumber)
 	}
 
-	onPageChanged = (page) => {
-		this.props.requestUsers(page, this.props.pageSize)
+	onPageChanged = (page, pagiNumber) => {
+		this.props.requestUsers(page, this.props.pageSize, pagiNumber)
 	}
 
 	render() {
@@ -32,6 +32,7 @@ class UsersContainer extends React.Component {
 								totalUsersCount={this.props.totalUsersCount}
 								currentPage={this.props.currentPage}
 								pageSize={this.props.pageSize}
+								currentPagiNumber={this.props.currentPagiNumber}
 								onPageChanged={this.onPageChanged}
 								users={this.props.users}
 								follow={this.props.follow}
@@ -50,6 +51,7 @@ let mapStateToProps = (state) => {
 		pageSize: getPageSize(state),
 		totalUsersCount: getTotalUsersCount(state),
 		currentPage: getCurrentPage(state),
+		currentPagiNumber: getCurrentPagiNumber(state),
 		isFetching: getIsFetching(state),
 		followInProgress: getFollowInProgress(state)
 	}

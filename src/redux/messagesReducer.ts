@@ -7,6 +7,18 @@ import avatar6 from '../static/Screenshot_6.png'
 
 const ADD_MESSAGE = 'ADD_MESSAGE'
 
+type DialogType = {
+  id: number,
+  name: string,
+  avatar: string
+}
+
+type MessagesType = {
+  id: number,
+  message: string,
+  type: string
+}
+
 let initialState = {
   dialogs: [
     {id: 1, name: 'Alexander', avatar: avatar1},
@@ -15,7 +27,7 @@ let initialState = {
     {id: 4, name: 'Helena', avatar: avatar4},
     {id: 5, name: 'Tony', avatar: avatar5},
     {id: 6, name: 'Michael', avatar: avatar6}
-  ],
+  ] as Array<DialogType>,
   messages: [
     {id: 1, message: 'Hi', type: 'incoming'},
     {id: 2, message: 'Hello', type: 'outcoming'},
@@ -23,10 +35,12 @@ let initialState = {
     {id: 4, message: 'Good bye', type: 'outcoming'},
     {id: 5, message: '100%', type: 'incoming'},
     {id: 6, message: 'Yo', type: 'outcoming'}
-  ]
+  ] as Array<MessagesType>
 }
 
-const messagesReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const messagesReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case ADD_MESSAGE:
       let newMessage = {
@@ -44,6 +58,11 @@ const messagesReducer = (state = initialState, action) => {
   }
 }
 
-export const addMessage = (newMessageText) => ({ type: ADD_MESSAGE, newMessageText })
+type addMessageType = {
+  type: typeof ADD_MESSAGE
+  newMessageText: string
+}
+
+export const addMessage = (newMessageText: string): addMessageType => ({ type: ADD_MESSAGE, newMessageText })
 
 export default messagesReducer

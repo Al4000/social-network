@@ -7,7 +7,8 @@ import User from './User/User'
 let Users = (props) => {
 
 	const showMore = () => {
-		props.onPageChanged(props.currentPage + 1)
+		let pagiNumber = props.currentPage % 10 === 0 ? props.currentPagiNumber + 1 : props.currentPagiNumber
+		props.onPageChanged(props.currentPage + 1, pagiNumber)
 	}
 
 	return (
@@ -15,6 +16,7 @@ let Users = (props) => {
 			<Paginator
 				currentPage={props.currentPage} onPageChanged={props.onPageChanged}
 				totalUsersCount={props.totalUsersCount} pageSize={props.pageSize}
+				currentPagiNumber={props.currentPagiNumber}
 			/>
 			{
 				props.users.map(u =>

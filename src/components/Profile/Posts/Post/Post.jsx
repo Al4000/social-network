@@ -3,8 +3,6 @@ import cl from './Post.module.css'
 import avatar from '../../../../static/avatar.png'
 import ThumbUpTwoToneIcon from '@material-ui/icons/ThumbUpTwoTone'
 import ThumbDownTwoToneIcon from '@material-ui/icons/ThumbDownTwoTone'
-// import ThumbUpIcon from '@material-ui/icons/ThumbUp'
-// import ThumbDownIcon from '@material-ui/icons/ThumbDown'
 
 const Post = (props) => {
 	const handleLike = (id) => {

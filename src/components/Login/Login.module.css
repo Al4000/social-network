@@ -4,3 +4,7 @@
 .summary_error {
     color: red;
 }
+.input_captcha {
+    margin-top: 6px;
+    margin-bottom: 10px;
+}

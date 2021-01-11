@@ -12,7 +12,7 @@ import {Redirect} from 'react-router-dom'
 
 const Login = (props) => {
 	const onSubmit = (formData) => {
-		props.login(formData.email, formData.password, formData.remember)
+		props.login(formData.email, formData.password, formData.remember, formData.captcha)
 	}
 
 	if (props.isAuth) {
@@ -22,7 +22,7 @@ const Login = (props) => {
 	return (
 		<div>
 			<h1>Login</h1>
-			<LoginReduxForm onSubmit={onSubmit} />
+			<LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
 		</div>
 	)
 }
@@ -73,9 +73,9 @@ const renderCheckbox = ({ input, label }) => (
 	</div>
 )
 
-const LoginForm = ({handleSubmit, error, submitFailed}) => {
+const LoginForm = (props) => {
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={props.handleSubmit}>
 			<div className={cl.input_field}>
 				<Field name={'email'} label={'Login'} component={renderTextField} />
 			</div>
@@ -85,10 +85,15 @@ const LoginForm = ({handleSubmit, error, submitFailed}) => {
 			<div className={cl.input_field}>
 				<Field name={'remember'} label={'Remember me'} component={renderCheckbox} type={'checkbox'} />
 			</div>
-			{	submitFailed &&
+
+			{	props.submitFailed &&
 				<div className={`${cl.summary_error} ${cl.input_field}`}>
-					{error}
+					{props.error}
 				</div> }
+			{props.captchaUrl && <div><img src={props.captchaUrl} alt="" /></div>}
+			{props.captchaUrl && <div className={cl.input_captcha}><Field name={'captcha'} label={'Enter a symbols'} component={renderTextField} /></div>
+			}
+
 			<div className={cl.input_field}>
 				<Button
 					variant="contained"
@@ -111,6 +116,7 @@ const LoginReduxForm = reduxForm({
 })(LoginForm)
 
 const mapStateToProps = (state) => ({
+	captchaUrl: state.auth.captchaUrl,
 	isAuth: state.auth.isAuth
 })
 

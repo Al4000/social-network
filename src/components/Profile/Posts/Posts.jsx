@@ -40,16 +40,15 @@ const Posts = React.memo(props => {
 })
 
 const validate = values => {
+	const maxLength = 100
 	const errors = {}
-	const requiredFields = [
-		'newPostText'
-	]
+	const requiredFields = []
 	requiredFields.forEach(field => {
 		if (!values[field]) {
 			errors[field] = 'Required'
 		}
-		if (values[field] && values[field].length > 10) {
-			errors[field] = 'Max length is 10 symbols'
+		if (values[field] && values[field].length > maxLength) {
+			errors[field] = `Max length is ${maxLength} symbols`
 		}
 	})
 	return errors
@@ -92,6 +91,7 @@ const PostForm = (props) => {
 				className={cl.button}
 				type={'submit'}
 				endIcon={<PostAdd/>}
+				disabled={props.pristine}
 			>
 				Add post
 			</Button>
